@@ -2,6 +2,7 @@
 <flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
   <includeClasses>
     <classEntry path="com.alkiteb.bahth.ArabicCharacters"/>
+    <classEntry path="com.alkiteb.bahth.ArabicStringUtils"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

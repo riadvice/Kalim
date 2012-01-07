@@ -42,10 +42,10 @@ package com.alkiteb.bahth
         }
 
         [Test]
-        public function testGetAllAyat() : void
+        public function removeDiacritics() : void
         {
             var resultAfterClean = "بسم الله الرحمن الرحيم"
-            Assert.assertEquals(ArabicStringUtils.removeDiacrltics("بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ"), resultAfterClean);
+            Assert.assertEquals(ArabicStringUtils.removeDiacritics("بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ"), resultAfterClean);
         }
 
     }

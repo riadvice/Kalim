@@ -17,20 +17,64 @@
 package com.alkiteb.bahth
 {
 
+    /**
+     *
+     * @author Ghazi Triki
+     *
+     */
     public class ArabicStringUtils
     {
-        public static function removeDiacrltics( value : String ) : String
+        /**
+         * Removes diactritics from an arabic string.
+         *
+         * @param value A string to be modified
+         * @return A new string without arabic diactritics
+         *
+         */
+        public static function removeDiacritics( value : String ) : String
         {
-            var diacrlticsPattern : RegExp = new RegExp(constructRegExpAlternatives(String.fromCharCode(ArabicCharacters.KASRA),
-                String.fromCharCode(ArabicCharacters.KASRATAN), String.fromCharCode(ArabicCharacters.FATHA), String.fromCharCode(ArabicCharacters.FATHATAN),
-                String.fromCharCode(ArabicCharacters.DAMMA), String.fromCharCode(ArabicCharacters.DAMMATAN), String.fromCharCode(ArabicCharacters.SHADDA),
-                String.fromCharCode(ArabicCharacters.SUKUN)), "g");
-            return value.split(diacrlticsPattern).join('');
+            return removeCharacters(value, getDiacriticsCodes());
         }
 
-        private static function constructRegExpAlternatives( ... params ) : String
+        /**
+         * Removes characters from a string.
+         *
+         * @param value A string to modify
+         * @param characterCodes An array of character codes to be removed from the string
+         * @return A new string without characters to remove
+         *
+         */
+        public static function removeCharacters( value : String, characterCodes : Array ) : String
         {
-            return params.join('|');
+            var diacrlticsPattern : RegExp = new RegExp(constructRegExpAlternatives(characterCodes), "g");
+            return value.replace(diacrlticsPattern, '');
+        }
+
+        /**
+         * Joins an Array into a string using '|' character, it will be used for
+         * RegExp definition.
+         *
+         * @param characters Characters array to be joined
+         * @return A string joined array with '|'
+         *
+         */
+        private static function constructRegExpAlternatives( characters : Array ) : String
+        {
+            return characters.join('|');
+        }
+
+        /**
+         *
+         * @return Returns an array containing diactritics characters
+         *
+         */
+        public static function getDiacriticsCodes() : Array
+        {
+            return [String.fromCharCode(ArabicCharacters.KASRA), String.fromCharCode(ArabicCharacters.KASRATAN),
+                String.fromCharCode(ArabicCharacters.FATHA), String.fromCharCode(ArabicCharacters.FATHATAN),
+                String.fromCharCode(ArabicCharacters.DAMMA), String.fromCharCode(ArabicCharacters.DAMMATAN),
+                String.fromCharCode(ArabicCharacters.SHADDA), String.fromCharCode(ArabicCharacters.SUKUN),
+                String.fromCharCode(ArabicCharacters.MADDA), String.fromCharCode(ArabicCharacters.SUPERSCRIPT_ALEF)]
         }
 
     }

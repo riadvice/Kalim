@@ -53,9 +53,15 @@ package com.alkiteb.bahth
         {
             var bismSearchResult : Array = ArabicStringUtils.search(basmalahWithDiacritics, bismWithoutDiacritics);
             Assert.assertNotNull(bismSearchResult);
+            Assert.assertEquals(bismSearchResult.length, 1)
             
             var rhSearchResult = ArabicStringUtils.search(basmalahWithDiacritics, "رح");
             Assert.assertNotNull(rhSearchResult);
+            Assert.assertEquals(rhSearchResult.length, 2)
+            for each ( var result : Object in rhSearchResult )
+            {
+                Assert.assertEquals(result.length, 5);
+            }
         }
         
         [Test]

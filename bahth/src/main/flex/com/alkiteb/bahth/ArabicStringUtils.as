@@ -27,19 +27,35 @@ package com.alkiteb.bahth
 
         /**
          * Performs a search operation on a string.
-         * 
+         *
          * @param value The string to search in.
          * @param searchString The string to find.
          * @param strict By default is false. Using the defautl behavior will generate a regular expression
          * to find the searchString. If is set to true he will try to find the searchString as it as.
-         * @return 
-         * 
+         * @return
+         *
          */
         public static function search( value : String, searchString : String, strict = false ) : Array
         {
-            // TODO : add found matches length
-            var searchRegExp : RegExp = new RegExp( !strict ? constructSearchRegExp(searchString) : searchString );
-            return searchRegExp.exec(value);
+            var resultArray : Array = [];
+            var searchRegExp : RegExp = new RegExp(!strict ? constructSearchRegExp(searchString) : searchString, "g");
+            var result : Object = searchRegExp.exec(value);
+            while (result != null)
+            {
+                result.foundValue = result[0],
+                    result.length = result.foundValue.length;
+
+                // We clean the object
+                delete result.input;
+                delete result[0];
+
+                resultArray.push(result);
+
+                // We try to find the next match
+                searchRegExp.lastIndex = result.index + result.length;
+                result = searchRegExp.exec(value);
+            }
+            return resultArray.length > 0 ? resultArray : null;
         }
 
         /**
@@ -83,22 +99,22 @@ package com.alkiteb.bahth
 
         /**
          * Constructs RegExp groups containing diacritics.
-         * 
+         *
          * @param characters Diacritics characters array.
-         * @return 
-         * 
+         * @return
+         *
          */
         private static function constructRegExpAlternativesGroup( characters : Array ) : String
         {
-            return  "(?:" + String.fromCharCode(ArabicCharacters.SHADDA) + ")*" + "(?:" + constructRegExpAlternatives(characters) + ")";
+            return "(?:" + String.fromCharCode(ArabicCharacters.SHADDA) + ")*" + "(?:" + constructRegExpAlternatives(characters) + ")";
         }
 
         /**
          * Constructs a string that will be used by search RegExp for arabic search.
-         * 
+         *
          * @param searchString
-         * @return 
-         * 
+         * @return
+         *
          */
         private static function constructSearchRegExp( searchString : String ) : String
         {

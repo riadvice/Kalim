@@ -123,9 +123,7 @@ package com.alkiteb.bahth
         }
 
         /**
-         *
          * @return Returns an array containing diactritics characters
-         *
          */
         public static function getDiacriticsCodes() : Array
         {
@@ -134,6 +132,32 @@ package com.alkiteb.bahth
                 String.fromCharCode(ArabicCharacters.DAMMA), String.fromCharCode(ArabicCharacters.DAMMATAN),
                 String.fromCharCode(ArabicCharacters.SHADDA), String.fromCharCode(ArabicCharacters.SUKUN),
                 String.fromCharCode(ArabicCharacters.MADDA), String.fromCharCode(ArabicCharacters.SUPERSCRIPT_ALEF)]
+        }
+
+        /**
+         * @return Returns an array containing alternatives for ALIF arabic character
+         */
+        public static function getAlifAlternativeCodes() : Array
+        {
+            return [String.fromCharCode(ArabicCharacters.ALIF), String.fromCharCode(ArabicCharacters.ALIF_MADDA),
+                String.fromCharCode(ArabicCharacters.ALIF_HAMZA_ABOVE), String.fromCharCode(ArabicCharacters.ALIF_HAMZA_BELOW),
+                String.fromCharCode(ArabicCharacters.ALIF_WASLA)];
+        }
+        
+        /**
+         * @return Returns an array containing alternatives for WAW arabic character
+         */
+        public static function getWawAlternativeCodes() : Array
+        {
+            return [String.fromCharCode(ArabicCharacters.WAW), String.fromCharCode(ArabicCharacters.ALIF_WAW)]
+        }
+        
+        /**
+         * @return Returns an array containing alternatives for YA arabic character
+         */
+        public static function getYaAlternativeCodes() : Array
+        {
+            return [String.fromCharCode(ArabicCharacters.YA), String.fromCharCode(ArabicCharacters.ALIF_MAQSURA)]
         }
 
     }

@@ -35,20 +35,21 @@ package com.alkiteb.bahth
          * @return
          *
          */
-        public static function search( value : String, searchString : String, strict = false ) : Array
+        public static function search( value : String, searchString : String, strict : Boolean = false ) : Array
         {
             var resultArray : Array = [];
             var searchRegExp : RegExp = new RegExp(!strict ? constructSearchRegExp(searchString) : searchString, "g");
             var result : Object = searchRegExp.exec(value);
             while (result != null)
             {
-                result.foundValue = result[0],
-                    result.length = result.foundValue.length;
+                result.foundValue = result[0];
+                result.length = result.foundValue.length;
 
                 // We clean the object
                 delete result.input;
                 delete result[0];
 
+                // We push the last result into resultArray
                 resultArray.push(result);
 
                 // We try to find the next match
@@ -104,9 +105,20 @@ package com.alkiteb.bahth
          * @return
          *
          */
-        private static function constructRegExpAlternativesGroup( characters : Array ) : String
+        private static function constructDiacriticsRegExpGroup( characters : Array ) : String
         {
-            return "(?:" + String.fromCharCode(ArabicCharacters.SHADDA) + ")*" + "(?:" + constructRegExpAlternatives(characters) + ")";
+            return "(?:" + String.fromCharCode(ArabicCharacters.SHADDA) + ")?" + "(?:" + constructRegExpAlternatives(characters) + ")?";
+        }
+
+        /**
+         * Builds a RegExp non capturing group
+         * @param characters Characters alternatives array
+         * @return
+         *
+         */
+        private static function buildNonCaptRegExpGroup( characters : Array ) : String
+        {
+            return "(?:" + constructRegExpAlternatives(characters) + ")";
         }
 
         /**
@@ -118,8 +130,12 @@ package com.alkiteb.bahth
          */
         private static function constructSearchRegExp( searchString : String ) : String
         {
-            return searchString.split('').join(constructRegExpAlternativesGroup(getDiacriticsCodes())) +
-                constructRegExpAlternativesGroup(getDiacriticsCodes());
+            var regExpPattern : String = searchString.split('').join(constructDiacriticsRegExpGroup(getDiacriticsCodes())) +
+                constructDiacriticsRegExpGroup(getDiacriticsCodes());
+            regExpPattern = regExpPattern.replace(new RegExp(buildNonCaptRegExpGroup(getAlifAlternativeCodes()), "g"), buildNonCaptRegExpGroup(getAlifAlternativeCodes()));
+            regExpPattern = regExpPattern.replace(new RegExp(buildNonCaptRegExpGroup(getWawAlternativeCodes()), "g"), buildNonCaptRegExpGroup(getWawAlternativeCodes()));
+            regExpPattern = regExpPattern.replace(new RegExp(buildNonCaptRegExpGroup(getYaAlternativeCodes()), "g"), buildNonCaptRegExpGroup(getYaAlternativeCodes()));
+            return regExpPattern;
         }
 
         /**
@@ -143,7 +159,7 @@ package com.alkiteb.bahth
                 String.fromCharCode(ArabicCharacters.ALIF_HAMZA_ABOVE), String.fromCharCode(ArabicCharacters.ALIF_HAMZA_BELOW),
                 String.fromCharCode(ArabicCharacters.ALIF_WASLA)];
         }
-        
+
         /**
          * @return Returns an array containing alternatives for WAW arabic character
          */
@@ -151,7 +167,7 @@ package com.alkiteb.bahth
         {
             return [String.fromCharCode(ArabicCharacters.WAW), String.fromCharCode(ArabicCharacters.ALIF_WAW)]
         }
-        
+
         /**
          * @return Returns an array containing alternatives for YA arabic character
          */

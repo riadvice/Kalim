@@ -20,17 +20,17 @@ package com.alkiteb.bahth
 
     public class ArabicStringUtilsTest
     {
-        
+
         var basmalahWithDiacritics : String;
         var basmalahWithoutDiacritics : String;
-        var bismWithoutDiacritics : String;
+        var salat : String;
 
         [Before]
         public function setUp() : void
         {
             basmalahWithDiacritics = "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ";
             basmalahWithoutDiacritics = "بسم الله الرحمن الرحيم";
-            bismWithoutDiacritics = "بسم";
+            salat = "مُحَمَّدٌ رَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَ سَلَّمَ وَ عَلَى آلِهِ وَ صَحْبِهِ أَجْمَعِينَ وَ مَنْ تَبِعَهُمْ بِإِحْسَانٍ إِلَى يَوْمِ الدِّينِ"
         }
 
         [After]
@@ -49,21 +49,65 @@ package com.alkiteb.bahth
         }
 
         [Test]
-        public function search() : void
+        public function searchWord() : void
         {
-            var bismSearchResult : Array = ArabicStringUtils.search(basmalahWithDiacritics, bismWithoutDiacritics);
+            var bismSearchResult : Array = ArabicStringUtils.search(basmalahWithDiacritics, "بسم");
             Assert.assertNotNull(bismSearchResult);
             Assert.assertEquals(bismSearchResult.length, 1)
-            
+        }
+
+        [Test]
+        public function searchWordPart() : void
+        {
             var rhSearchResult = ArabicStringUtils.search(basmalahWithDiacritics, "رح");
             Assert.assertNotNull(rhSearchResult);
             Assert.assertEquals(rhSearchResult.length, 2)
-            for each ( var result : Object in rhSearchResult )
+            for each (var result : Object in rhSearchResult)
             {
                 Assert.assertEquals(result.length, 5);
             }
         }
-        
+
+
+        [Test]
+        public function searchWithYa() : void
+        {
+            var aliSearchResult;
+            var aliSearchArray : Array = ['علي', 'على'];
+            for each (var word : String in aliSearchArray)
+            {
+                aliSearchResult = ArabicStringUtils.search(salat, word);
+                Assert.assertNotNull(aliSearchResult);
+                Assert.assertEquals(aliSearchResult.length, 2)
+            }
+        }
+
+        [Test]
+        public function searchWithAlif() : void
+        {
+            var alifSearchResult;
+            var aliSearchArray : Array = ['أ', 'ا', 'إ', 'آ'];
+            for each (var word : String in aliSearchArray)
+            {
+                alifSearchResult = ArabicStringUtils.search(salat, word);
+                Assert.assertNotNull(alifSearchResult);
+                Assert.assertEquals(alifSearchResult.length, 8)
+            }
+        }
+
+        [Test]
+        public function searchWithWaw() : void
+        {
+            var wawSearchResult;
+            var aliSearchArray : Array = ['ؤ', 'و'];
+            for each (var word : String in aliSearchArray)
+            {
+                wawSearchResult = ArabicStringUtils.search(salat, word);
+                Assert.assertNotNull(wawSearchResult);
+                Assert.assertEquals(wawSearchResult.length, 6)
+            }
+        }
+
         [Test]
         public function removeDiacritics() : void
         {

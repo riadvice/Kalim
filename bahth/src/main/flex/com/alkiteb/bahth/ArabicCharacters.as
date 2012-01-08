@@ -17,6 +17,10 @@
 package com.alkiteb.bahth
 {
 
+    /**
+     * A class containing code of most used arabic characters.
+     * Take a look at http://unicode.org/charts/PDF/Unicode-4.1/U41-0600.pdf
+     */
     public class ArabicCharacters
     {
         // Decoration characters
@@ -79,7 +83,7 @@ package com.alkiteb.bahth
         public static const SHADDA : uint = 0x651;             //  ّ
         public static const SUKUN : uint = 0x652;              //  ْ
         public static const MADDA : uint = 0x653;              //  ٓ
-        public static const DAMMA_OVERTRUN : uint = 0x657      //  ٗ
+        public static const DAMMA_INVERTED : uint = 0x657      //  ٗ
             
         
         // Quran Reading Waqf Symbols

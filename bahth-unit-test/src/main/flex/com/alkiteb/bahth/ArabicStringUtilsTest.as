@@ -20,10 +20,17 @@ package com.alkiteb.bahth
 
     public class ArabicStringUtilsTest
     {
+        
+        var basmalahWithDiacritics : String;
+        var basmalahWithoutDiacritics : String;
+        var bismWithoutDiacritics : String;
 
         [Before]
         public function setUp() : void
         {
+            basmalahWithDiacritics = "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ";
+            basmalahWithoutDiacritics = "بسم الله الرحمن الرحيم";
+            bismWithoutDiacritics = "بسم";
         }
 
         [After]
@@ -42,10 +49,19 @@ package com.alkiteb.bahth
         }
 
         [Test]
+        public function search() : void
+        {
+            var bismSearchResult : Array = ArabicStringUtils.search(basmalahWithDiacritics, bismWithoutDiacritics);
+            Assert.assertNotNull(bismSearchResult);
+            
+            var rhSearchResult = ArabicStringUtils.search(basmalahWithDiacritics, "رح");
+            Assert.assertNotNull(rhSearchResult);
+        }
+        
+        [Test]
         public function removeDiacritics() : void
         {
-            var resultAfterClean = "بسم الله الرحمن الرحيم"
-            Assert.assertEquals(ArabicStringUtils.removeDiacritics("بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ"), resultAfterClean);
+            Assert.assertEquals(ArabicStringUtils.removeDiacritics(basmalahWithDiacritics), basmalahWithoutDiacritics);
         }
 
     }

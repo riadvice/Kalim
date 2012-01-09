@@ -107,6 +107,19 @@ package com.alkiteb.bahth
                 Assert.assertEquals(wawSearchResult.length, 6)
             }
         }
+        
+        [Test]
+        public function searchWithTeMarbuta() : void
+        {
+            var wawSearchResult;
+            var aliSearchArray : Array = ['صحبه', 'صحبة'];
+            for each (var word : String in aliSearchArray)
+            {
+                wawSearchResult = ArabicStringUtils.search(salat, word);
+                Assert.assertNotNull(wawSearchResult);
+                Assert.assertEquals(wawSearchResult.length, 1)
+            }
+        }
 
         [Test]
         public function removeDiacritics() : void

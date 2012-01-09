@@ -135,7 +135,9 @@ package com.alkiteb.bahth
             regExpPattern = regExpPattern.replace(new RegExp(buildNonCaptRegExpGroup(getAlifAlternativeCodes()), "g"), buildNonCaptRegExpGroup(getAlifAlternativeCodes()));
             regExpPattern = regExpPattern.replace(new RegExp(buildNonCaptRegExpGroup(getWawAlternativeCodes()), "g"), buildNonCaptRegExpGroup(getWawAlternativeCodes()));
             regExpPattern = regExpPattern.replace(new RegExp(buildNonCaptRegExpGroup(getYaAlternativeCodes()), "g"), buildNonCaptRegExpGroup(getYaAlternativeCodes()));
+            regExpPattern = regExpPattern.replace(new RegExp(buildNonCaptRegExpGroup(getTeMarbutaAlternativeCodes()), "g"), buildNonCaptRegExpGroup(getTeMarbutaAlternativeCodes()));
             return regExpPattern;
+            
         }
 
         /**
@@ -174,6 +176,14 @@ package com.alkiteb.bahth
         public static function getYaAlternativeCodes() : Array
         {
             return [String.fromCharCode(ArabicCharacters.YA), String.fromCharCode(ArabicCharacters.ALIF_MAQSURA)]
+        }
+        
+        /**
+         * @return Returns an array containing alternatives for TE_MARBUTA arabic character
+         */
+        public static function getTeMarbutaAlternativeCodes() : Array
+        {
+            return [String.fromCharCode(ArabicCharacters.TE_MARBUTA), String.fromCharCode(ArabicCharacters.HE)]
         }
 
     }

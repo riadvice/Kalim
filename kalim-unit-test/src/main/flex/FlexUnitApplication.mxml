@@ -9,12 +9,12 @@
                        creationComplete="onCreationComplete()" showStatusBar="false">
     <fx:Script>
         <![CDATA[
-            import com.alkiteb.bahth.testsuite.BahthTestSuite;
+            import com.alkiteb.kalim.testsuite.KalimTestSuite;
             
             public function currentRunTestSuite():Array
             {
                 var testsToRun:Array = new Array();
-                testsToRun.push(com.alkiteb.bahth.testsuite.BahthTestSuite);
+                testsToRun.push(com.alkiteb.kalim.testsuite.KalimTestSuite);
                 return testsToRun;
             }
             

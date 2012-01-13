@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<actionScriptProperties analytics="false" mainApplicationPath="bahth.as" projectUUID="486efb01-1f44-4b86-b51f-f9f451d4bd29" version="10">
+<actionScriptProperties analytics="false" mainApplicationPath="kalim.as" projectUUID="486efb01-1f44-4b86-b51f-f9f451d4bd29" version="10">
   <compiler additionalCompilerArguments="-locale ar_TN" autoRSLOrdering="true" copyDependentFiles="false" fteInMXComponents="false" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="false" htmlHistoryManagement="false" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="bin" removeUnusedRSL="true" sourceFolderPath="src/main/flex" strict="true" targetPlayerVersion="0.0.0" useApolloConfig="false" useDebugRSLSwfs="true" verifyDigests="true" warn="true">
     <compilerSourcePath/>
     <libraryPath defaultLinkType="0">
@@ -13,7 +13,7 @@
     <sourceAttachmentPath/>
   </compiler>
   <applications>
-    <application path="bahth.as"/>
+    <application path="kalim.as"/>
   </applications>
   <modules/>
   <buildCSSFiles/>

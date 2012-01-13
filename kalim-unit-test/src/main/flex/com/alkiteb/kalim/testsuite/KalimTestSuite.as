@@ -14,14 +14,14 @@
    You should have received a copy of the GNU General Public License
    along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alkiteb.bahth.testsuite
+package com.alkiteb.kalim.testsuite
 {
-    import com.alkiteb.bahth.ArabicStringUtilsTest;
+    import com.alkiteb.kalim.ArabicStringUtilsTest;
 
     [Suite]
     [RunWith("org.flexunit.runners.Suite")]
-    public class BahthTestSuite
+    public class KalimTestSuite
     {
-        public var test1 : com.alkiteb.bahth.ArabicStringUtilsTest;
+        public var test1 : com.alkiteb.kalim.ArabicStringUtilsTest;
     }
 }

@@ -20,7 +20,7 @@
         <flexmojos.version>4.2-beta</flexmojos.version>
         <flex.sdk.version>4.6.b.23201</flex.sdk.version>
         <apparat.version>1.0-RC9</apparat.version>
-        <flexunit.version>4.0-rc-1</flexunit.version>
+        <flexunit.version>4.0-beta-2</flexunit.version>
         <flashplayer.version.swf>13</flashplayer.version.swf>
         <flashplayer.version.major>11</flashplayer.version.major>
         <flashplayer.version.minor>1</flashplayer.version.minor>
@@ -60,6 +60,7 @@
 
     <build>
         <sourceDirectory>src/main/flex</sourceDirectory>
+        <testSourceDirectory>src/test/flex</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.sonatype.flexmojos</groupId>

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 Ghazi Triki <ghazi.nocturne@gmail.com>
+   Copyright (C) 2012-2013 Ghazi Triki <ghazi.nocturne@gmail.com>
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -137,7 +137,7 @@ package com.alkiteb.kalim
             regExpPattern = regExpPattern.replace(new RegExp(buildNonCaptRegExpGroup(getYaAlternativeCodes()), "g"), buildNonCaptRegExpGroup(getYaAlternativeCodes()));
             regExpPattern = regExpPattern.replace(new RegExp(buildNonCaptRegExpGroup(getTeMarbutaAlternativeCodes()), "g"), buildNonCaptRegExpGroup(getTeMarbutaAlternativeCodes()));
             return regExpPattern;
-            
+
         }
 
         /**
@@ -177,7 +177,7 @@ package com.alkiteb.kalim
         {
             return [String.fromCharCode(ArabicCharacters.YA), String.fromCharCode(ArabicCharacters.ALIF_MAQSURA)]
         }
-        
+
         /**
          * @return Returns an array containing alternatives for TE_MARBUTA arabic character
          */

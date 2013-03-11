@@ -107,7 +107,7 @@ package com.alkiteb.kalim
                 Assert.assertEquals(wawSearchResult.length, 6)
             }
         }
-        
+
         [Test]
         public function searchWithTeMarbuta() : void
         {

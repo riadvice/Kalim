@@ -9,12 +9,12 @@
                        creationComplete="onCreationComplete()" showStatusBar="false">
     <fx:Script>
         <![CDATA[
-            import com.alkiteb.kalim.TestArabicStringUtils;
+            import com.riadvice.kalim.TestArabicStringUtils;
             
             public function currentRunTestSuite():Array
             {
                 var testsToRun:Array = new Array();
-                testsToRun.push(com.alkiteb.kalim.TestArabicStringUtils);
+                testsToRun.push(com.riadvice.kalim.TestArabicStringUtils);
                 return testsToRun;
             }
             

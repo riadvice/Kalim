@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testrun name="" >
 <testsuite  name="Default Test Suite" project="kalim-unit-test">
-<testsuite name="com.alkiteb.kalim:TestArabicStringUtils" type="testcaseclass"/>
+<testsuite name="com.riadvice.kalim:TestArabicStringUtils" type="testcaseclass"/>
 </testsuite>
 <portNumber value="8765" />
 </testrun>
